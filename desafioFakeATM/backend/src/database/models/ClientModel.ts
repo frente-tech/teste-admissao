@@ -1,22 +1,26 @@
 import { DataTypes } from "sequelize/dist";
 import { db } from "../db";
 
-export const UserModel = db.define("user", {
+export const ClientModel = db.define("client", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  password: {
+  dateBorn: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  limit: {
+    type: DataTypes.DECIMAL,
+    allowNull: true,
+  },
+  cpf: {
     type: DataTypes.STRING,
     allowNull: false,
   },

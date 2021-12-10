@@ -1,23 +1,23 @@
 import { DataTypes } from "sequelize/dist";
 import { db } from "../db";
 
-export const UserModel = db.define("user", {
+export const OperationModel = db.define("operation", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-  email: {
-    type: DataTypes.STRING,
+  value: {
+    type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  name: {
+  origin: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
-  password: {
+  recipient: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
