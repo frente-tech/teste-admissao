@@ -1,7 +1,7 @@
 ## Rodando o projeto.
 
 <br/>
-  Fiz uso do gerenciador de pacotes "Yarn", portanto para dar inicio ao Front basta digitar ao terminal integrado "`yarn`" que todas as dependencias necessarias serão baixadas. E para dar inicio a visualização basta digitar o comando "`yarn start`" ao terminal integrado, logo após o download completo de todas as dependencias. 
+  Fiz uso do gerenciador de pacotes "Yarn", portanto para dar inicio ao Front basta digitar ao terminal integrado "`yarn`" que todas as dependencias necessarias serão baixadas. E para dar inicio a visualização basta digitar o comando "`yarn start`" ao terminal integrado para inicializar o Frontend, use o comando "`yarn dev`" ao terminal integrado para inicializar o backend... ambos logo após o download completo de todas as dependencias. 
 <br/>
   OBS: Lembrando que em cada pasta "frontend" e "backend" possuem um arquivo "`.env-sample`" que contém instruções de como ele deve ser utilizado para o bom funcionamento.
 <br/>
@@ -25,7 +25,7 @@ OBS: a primeira pagina a ser apresentada é a pagina de login, como a implementa
 ## Conclusões finais.
 
 <br/>
-  Durante o desenvolvimento da aplicação me deparei com varias barreiras das quais levei um tempo para superar, acredito que talvez por falta de conhecimento/pratica com o TS tudo contribuiu um pouco a favor da dificuldade, mas de qualquer forma conseguir encontrar diversas soluções para os problemas e consegui apresentar o Front que estava em minha mente, então mesmo sendo desafiador no fim foi muito gratificante sair da zona de conforto e ver o resultado. No fim a elaboração do front acabou tomando mais tempo do que eu havia planejado e devido as dificuldades acabei não conseguindo entregar o back-end que planejei.<br/>
+  Durante o desenvolvimento da aplicação me deparei com varias barreiras das quais levei um tempo para superar, acredito que talvez por falta de conhecimento/pratica com o TS tudo contribuiu um pouco a favor da dificuldade, mas de qualquer forma conseguir encontrar diversas soluções para os problemas e consegui apresentar o Front que estava em minha mente, então mesmo sendo desafiador no fim foi muito gratificante sair da zona de conforto e ver o resultado. No fim a elaboração do front acabou tomando mais tempo do que eu havia planejado e devido as dificuldades acabei não conseguindo entregar o back-end que planejei e também encontrei dificuldades na implementação entre backend + frontend, talvez por falta de conhecimento não consegui solucionar alguns problemas de integração que aconteceram durante o caminho.<br/>
   Reconheço que tenho ainda um caminho de aprendizado pela frente, devido as dificuldades com o back-end, mas também reconheço que consegui aprender muitas coisas em pouco tempo.<br /><br/>
   
   Gostaria de agradecer a oportunidade de participar do processo seletivo, abraços : )
