@@ -5,10 +5,21 @@ import {
   Operationcard,
   OperationForm,
 } from "../../components";
+import api from "../../services/api";
 //dataFake
-import { operationCardInfo, operationObj } from "./Data";
+import { operationObj } from "./Data";
 
 const Operation = () => {
+  const [operation, setOperation] = React.useState([]);
+  const getOperation = () => {
+    api.get("/operations").then((response) => {
+      const data = response.data;
+      setOperation(data);
+    });
+  };
+  React.useEffect(() => {
+    getOperation();
+  }, []);
   return (
     <>
       <Navbar />
@@ -35,16 +46,16 @@ const Operation = () => {
         );
       })}
       <OperationForm />
-      {operationCardInfo.operation.map((operationProps) => {
+      {operation?.map((operationProps: any) => {
         return (
           <Operationcard
-            key={operationProps.key}
-            currencyName={operationProps.currencyName}
-            currencyImg={operationProps.currencyImg}
-            clientOperation={operationProps.clientOperation}
-            transferOperation={operationProps.transferOperation}
-            operationLimit={operationProps.operationLimit}
-            valueOperation={operationProps.valueOperation}
+            key={operationProps?.id}
+            currencyName={operationProps?.origin}
+            currencyImg={"operationProps?.currencyImg"}
+            clientOperation={operationProps?.origin}
+            transferOperation={operationProps?.recipient}
+            operationLimit={operationProps?.operationLimit}
+            valueOperation={operationProps?.value}
           />
         );
       })}

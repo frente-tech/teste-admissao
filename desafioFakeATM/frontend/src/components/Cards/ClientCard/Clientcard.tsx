@@ -20,7 +20,7 @@ interface Props {
   profileName: string;
   profileImg: string;
   profileCpf: string;
-  profileLimit: number;
+  profileLimit: string;
   profileDate: string;
 }
 const Clientcard = ({

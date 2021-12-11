@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { AiOutlineHome, AiOutlineUserAdd } from "react-icons/ai";
 //interface
-interface ClientFormHeaderProps{
-  fontSize : string
-  fontSizeMobile : string
+interface ClientFormHeaderProps {
+  fontSize: string;
+  fontSizeMobile: string;
 }
 
 interface ClientInputContainerProps {
-  flexDirection: string
+  flexDirection: string;
 }
 
 export const ClientFormContainer = styled.div`
@@ -20,19 +20,18 @@ export const ClientFormContainer = styled.div`
   background: #101522;
 
   @media screen and (max-width: 960px) {
-   
   }
 `;
 
 export const ClientFormHeader = styled.div<ClientFormHeaderProps>`
-   color: ${(props) => props.color};
+  color: ${(props) => props.color};
   justify-self: flex-start;
   cursor: pointer;
   text-decoration: none;
   font-size: ${(props) => props.fontSize};
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px auto;
   @media screen and (max-width: 960px) {
     margin-top: 10px;
     font-size: ${(props) => props.fontSizeMobile};
@@ -57,7 +56,7 @@ export const ClientFormTitleAddres = styled(AiOutlineHome)`
 export const ClientInputContainer = styled.div<ClientInputContainerProps>`
   display: flex;
   text-align: left;
-  flex-direction: ${props => props.flexDirection};
+  flex-direction: ${(props) => props.flexDirection};
   justify-content: start;
   align-items: flex-start;
   margin: 20px auto;
@@ -70,7 +69,22 @@ export const ClientInputContainer = styled.div<ClientInputContainerProps>`
     font-weight: 100;
   }
 `;
-
+export const ClientFormSubmit = styled.form`
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: white;
+    font-weight: 100;
+  }
+`;
 export const ClientInput = styled.input`
   background: #fff;
   border-radius: 1rem;

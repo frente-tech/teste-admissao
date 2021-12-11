@@ -22,17 +22,3 @@ export const operationObj = {
     },
   ],
 };
-
-export const operationCardInfo = {
-  operation: [
-    {
-      key: 1,
-      currencyName: "Angelita Alden",
-      currencyImg: money,
-      valueOperation: 12000,
-      clientOperation: "Angelita Alden",
-      transferOperation: "Diogo S.N",
-      operationLimit: 12000,
-    },
-  ],
-};

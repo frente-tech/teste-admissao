@@ -63,7 +63,22 @@ export const OperationInputContainer = styled.div<OperationInputContainerProps>`
     font-weight: 100;
   }
 `;
-
+export const OperationFormSubmit = styled.form`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: white;
+    font-weight: 100;
+  }
+`;
 export const OperationInput = styled.input`
   background: #fff;
   border-radius: 1rem;

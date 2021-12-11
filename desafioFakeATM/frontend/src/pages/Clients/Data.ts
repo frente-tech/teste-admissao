@@ -1,5 +1,4 @@
 import { svg3 } from "../../assets";
-import { avatar } from "../../assets";
 
 export const clientsObj = {
   page: [
@@ -20,19 +19,6 @@ export const clientsObj = {
       img: svg3,
       alt: "Imagem",
       start: true, //mais proximo ou longe dos cantos da tela
-    },
-  ],
-};
-
-export const clientCardInfo = {
-  client: [
-    {
-      key: 1,
-      profileCpf: "xxx.xxx.xxx-xx",
-      profileDate: "30/03/2001",
-      profileImg: avatar,
-      profileLimit: 12000,
-      profileName: "Angelita Alden",
     },
   ],
 };
