@@ -1,14 +1,16 @@
 {
-  "name": "frente-deliver-pkg-server",
+  "name": "frente-delivery-pkg-server",
   "version": "1.0.0",
   "description": "",
   "private": "true",
   "type": "commonjs",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node .",
+    "start": "pm2-runtime start ecosystem.config.yml",
+    "start:dev": "pm2-runtime start ecosystem.config.yml --watch",
     "debug": "nodemon .",
-    "test": "npm run test"
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "lint": "eslint --no-inline-config --ext .js,.jsx --no-error"
   },
   "engines": {
     "node": "16.13.1"
@@ -29,11 +31,13 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "pg": "^8.7.1",
+    "pm2": "^5.1.2",
     "sequelize": "^6.12.0-beta.3"
   },
   "devDependencies": {
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-editorconfig": "^3.2.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-sonarjs": "^0.11.0",

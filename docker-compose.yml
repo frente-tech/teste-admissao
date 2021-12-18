@@ -1,21 +1,23 @@
 version: "3.9"
 services:
-  node:
-    image: node
+  frente-node:
+    build: .
     container_name: frente-delivery-pkg-node
-    command: npm run debug
+    command: npm run start:dev
     depends_on: 
-      - postgres
+      - frente-postgres
     ports:
       - "3000:3000"
     volumes: 
-      - .:/project
+      - .:/frente-delivery-pkg
     networks: 
       - app
+    env_file:
+      - .env
     environment:
-      - POSTGRES_HOSTNAME=postgres
-    working_dir: /project
-  postgres:
+      - NODE_ENV=development
+    working_dir: /frente-delivery-pkg
+  frente-postgres:
     image: postgres
     container_name: frente-delivery-pkg-postgres
     volumes: 
@@ -24,10 +26,8 @@ services:
       - "5432:5432"
     networks: 
       - app
-    environment:
-      - POSTGRES_USER=frente-pkg
-      - POSTGRES_PASSWORD=frente123
-      - POSTGRES_HOSTNAME=postgres
+    env_file:
+      - .env
 volumes:
   frente-postgres-data:
 networks: 
