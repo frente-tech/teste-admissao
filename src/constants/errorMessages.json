@@ -1,0 +1,6 @@
+{
+  "INCORRECT_AUTH": "Invalid fields",
+  "BAD_JWT": "Expired or invalid token",
+  "MISSING_AUTH": "Token not found",
+  "INTERNAL_ERROR": "Internal error"
+}
