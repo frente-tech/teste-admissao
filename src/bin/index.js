@@ -1,7 +1,7 @@
 const DEFAULT_PORT = 3000;
 let server;
 const startServer = async (app) => {
-  const PORT = process.env.PORT || DEFAULT_PORT;
+  const PORT = process.env.SRV_PORT || DEFAULT_PORT;
 
   server = app.listen(PORT, (err) => {
     if (err) {

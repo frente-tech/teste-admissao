@@ -7,7 +7,8 @@ services:
     depends_on: 
       - frente-postgres
     ports:
-      - "3000:3000"
+      - "${SRV_PORT}:${SRV_PORT}"
+      - "${REACT_DEV_PORT}:${REACT_DEV_PORT}"
     volumes: 
       - .:/frente-delivery-pkg
     networks: 
@@ -23,7 +24,7 @@ services:
     volumes: 
       - frente-postgres-data:/data
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     networks: 
       - app
     env_file:

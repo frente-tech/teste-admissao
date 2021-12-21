@@ -7,15 +7,15 @@ const validateJWT = [
   (req, _res, next) => {
     let userPayload = null;
     try {
-      const { authorization: token = null } = req.headers;
+      const { token = null } = req.cookies;
       if (token) {
         userPayload = jwt.verify(token, process.env.JWT_SECRET);
       } else {
         throw new AppError(httpCodes.HTTP_UNAUTHORIZED, errorMessages.MISSING_AUTH);
       }
       if (userPayload !== null) {
-        const { id, email, role } = userPayload.data.dataValues;
-        req.user = { id, email, role };
+        const { email, role } = userPayload.data;
+        req.user = { email, role };
         return next();
       }
       throw new AppError(httpCodes.HTTP_UNAUTHORIZED, errorMessages.BAD_JWT);

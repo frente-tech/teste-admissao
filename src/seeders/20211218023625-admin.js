@@ -1,5 +1,7 @@
 'use strict';
 
+const { encryptString } = require("../utils/crypt");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
@@ -10,7 +12,7 @@ module.exports = {
         address: 'Alameda Frente Corretora, 1, São Paulo',
         birthdate: '1991-09-24',
         email: 'admin@pkg.frente.com.br',
-        password: '@dmin',
+        password: encryptString('@dmin', process.env.CRYPT_SECRET),
         role: 'admin',
       }], { transaction });
       await transaction.commit();
