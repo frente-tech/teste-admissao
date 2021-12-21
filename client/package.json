@@ -1,0 +1,61 @@
+{
+  "name": "frente-delivery-pkg-client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@hookform/resolvers": "^2.8.5",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.24.0",
+    "framer-motion": "^4.1.17",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.22.2",
+    "react-query": "^3.34.5",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "PORT=$(grep REACT_DEV_PORT ../.env | cut -d '=' -f2) react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c ./.eslintrc.json . --ext .js,.jsx",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-func": "^0.1.17",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-sonarjs": "^0.11.0",
+    "eslint-plugin-testing-library": "^5.0.1"
+  }
+}
