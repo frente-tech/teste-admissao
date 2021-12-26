@@ -7,36 +7,36 @@ module.exports = {
         'Packages',
         {
           id: {
-            allowNull: false,
-            primaryKey: true,
             type: Sequelize.DataTypes.UUID,
             defaultValue: Sequelize.DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
           },
           billType: {
-            field: 'bill_type',
-            allowNull: false,
             type: Sequelize.DataTypes.ENUM,
             values: ['10', '50', '100'],
+            allowNull: false,
+            field: 'bill_type',
           },
           billQuantity: {
-            field: 'bill_quantity',
-            allowNull: false,
             type: Sequelize.DataTypes.INTEGER,
+            allowNull: false,
+            field: 'bill_quantity',
           },
           status: {
-            allowNull: false,
             type: Sequelize.DataTypes.ENUM,
             values: ['open', 'closed'],
             defaultValue: 'open',
+            allowNull: false,
           },
           closedAt: {
-            field: 'closed_at',
             type: Sequelize.DataTypes.DATE,
+            field: 'closed_at',
           },
           createdAt: {
+            type: Sequelize.DataTypes.DATE,
             field: 'created_at',
             allowNull: false,
-            type: Sequelize.DataTypes.DATE,
           },
         },
         { transaction }

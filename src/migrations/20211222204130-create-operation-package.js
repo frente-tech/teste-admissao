@@ -7,32 +7,37 @@ module.exports = {
         'Operation_Package',
         {
           operationId: {
+            type: Sequelize.DataTypes.UUID,
+            primaryKey: true,
             allowNull: false,
             field: 'operation_id',
-            type: Sequelize.DataTypes.UUID,
             references: {
               model: 'Operations',
               key: 'id',
             },
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
-            primaryKey: true,
           },
           packageId: {
+            type: Sequelize.DataTypes.UUID,
+            primaryKey: true,
             allowNull: false,
             field: 'package_id',
-            type: Sequelize.DataTypes.UUID,
             references: {
               model: 'Packages',
               key: 'id',
             },
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
-            primaryKey: true,
           },
           quantity: {
-            allowNull: false,
             type: Sequelize.DataTypes.INTEGER,
+            allowNull: false,
+          },
+          provisioned: {
+            type: Sequelize.DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false,
           },
         },
         { transaction }

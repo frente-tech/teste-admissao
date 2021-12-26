@@ -7,37 +7,37 @@ module.exports = {
         'Users',
         {
           id: {
-            allowNull: false,
-            primaryKey: true,
             type: Sequelize.DataTypes.UUID,
             defaultValue: Sequelize.DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
           },
           name: {
-            allowNull: false,
             type: Sequelize.STRING,
+            allowNull: false,
           },
           address: {
-            allowNull: false,
             type: Sequelize.STRING,
+            allowNull: false,
           },
           birthdate: {
-            allowNull: false,
             type: Sequelize.DATEONLY,
+            allowNull: false,
           },
           cpf: {
-            allowNull: false,
-            unique: true,
             type: Sequelize.STRING,
+            unique: true,
+            allowNull: false,
           },
           createdAt: {
-            field: 'created_at',
-            allowNull: false,
             type: Sequelize.DataTypes.DATE,
             defaultValue: Sequelize.DataTypes.NOW,
+            allowNull: false,
+            field: 'created_at',
           },
           deletedAt: {
+            type: Sequelize.DataTypes.DATE,
             field: 'deleted_at',
-            type: Sequelize.DataTypes.DATE
           },
         },
         { transaction }

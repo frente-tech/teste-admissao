@@ -11,8 +11,8 @@ module.exports = {
       await queryInterface.bulkInsert(
         'Operation_Package',
         [
-          { operation_id: OPERATION_SEED_UUIDV4, package_id: PACKAGE_ONE_SEED_UUIDV4, quantity: 50 },
-          { operation_id: OPERATION_SEED_UUIDV4, package_id: PACKAGE_TWO_SEED_UUIDV4, quantity: 20 },
+          { operation_id: OPERATION_SEED_UUIDV4, package_id: PACKAGE_ONE_SEED_UUIDV4, quantity: 50, provisioned: true },
+          { operation_id: OPERATION_SEED_UUIDV4, package_id: PACKAGE_TWO_SEED_UUIDV4, quantity: 20, provisioned: false },
         ],
         { transaction }
       );

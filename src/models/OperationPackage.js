@@ -7,7 +7,15 @@ module.exports = (sequelize, DataTypes) => {
   const OperationPackage = sequelize.define(
     'OperationPackage',
     {
-      quantity: { type: DataTypes.INTEGER, allowNull: false },
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      provisioned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
     },
     {
       timestamps: false,

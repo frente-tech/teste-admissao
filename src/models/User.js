@@ -14,18 +14,31 @@ module.exports = (sequelize, DataTypes) => {
     'User',
     {
       id: {
-        allowNull: false,
-        primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-      },
-      name: { type: DataTypes.STRING, allowNull: false },
-      address: { type: DataTypes.STRING, allowNull: false },
-      birthdate: { type: DataTypes.DATEONLY, allowNull: false },
-      cpf: { type: DataTypes.STRING, allowNull: false, unique: true },
-      password: {
+        primaryKey: true,
         allowNull: false,
+      },
+      name: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      birthdate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
+      cpf: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
         // hash password when write
         set(val) {
           this.setDataValue(
@@ -43,14 +56,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
         unique: true,
+        allowNull: false,
       },
       role: {
-        allowNull: false,
         type: DataTypes.ENUM,
         values: ['user', 'admin'],
         defaultValue: 'user',
+        allowNull: false,
       },
     },
     {

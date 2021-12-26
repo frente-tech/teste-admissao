@@ -7,15 +7,15 @@ module.exports = {
         'Operations',
         {
           id: {
-            allowNull: false,
-            primaryKey: true,
             type: Sequelize.DataTypes.UUID,
             defaultValue: Sequelize.DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
           },
           clientId: {
             type: Sequelize.DataTypes.UUID,
-            field: 'client_id',
             allowNull: false,
+            field: 'client_id',
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
             references: {
@@ -24,26 +24,26 @@ module.exports = {
             },
           },
           value: {
+            type: Sequelize.DataTypes.INTEGER,
             allowNull: false,
-            type: Sequelize.DataTypes.INTEGER
           },
           billPreference: {
-            field: 'bill_preference',
-            allowNull: false,
             type: Sequelize.DataTypes.ENUM,
             values: ['10', '50', '100'],
             defaultValue: '100',
+            allowNull: false,
+            field: 'bill_preference',
           },
           status: {
-            allowNull: false,
             type: Sequelize.DataTypes.ENUM,
-            values: ['open', 'provisioned', 'ready'],
+            values: ['open', 'provisioning', 'ready'],
             defaultValue: 'open',
+            allowNull: false,
           },
           createdAt: {
-            field: 'created_at',
+            type: Sequelize.DataTypes.DATE,
             allowNull: false,
-            type: Sequelize.DataTypes.DATE
+            field: 'created_at',
           },
         },
         { transaction }

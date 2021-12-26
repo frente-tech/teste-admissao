@@ -14,7 +14,7 @@ module.exports = {
         client_id: USER_SEED_UUIDV4,
         value: 3500,
         bill_preference: '50',
-        status: 'ready',
+        status: 'provisioning',
         created_at: new Date(),
       }], { transaction });
       await transaction.commit();

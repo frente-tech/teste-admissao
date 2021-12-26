@@ -8,8 +8,8 @@ module.exports = {
         {
           type: Sequelize.DataTypes.ENUM,
           values: ['user', 'admin'],
-          allowNull: false,
           defaultValue: 'user',
+          allowNull: false,
         },
         { transaction }
       );
@@ -17,9 +17,9 @@ module.exports = {
         'Users',
         'email',
         {
-          allowNull: false,
-          unique: true,
           type: Sequelize.DataTypes.STRING,
+          unique: true,
+          allowNull: false,
         },
         { transaction }
       );
@@ -27,8 +27,8 @@ module.exports = {
         'Users',
         'password',
         {
-          allowNull: false,
           type: Sequelize.DataTypes.STRING,
+          allowNull: false,
         },
         { transaction }
       );

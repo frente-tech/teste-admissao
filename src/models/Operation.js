@@ -8,12 +8,15 @@ module.exports = (sequelize, DataTypes) => {
     'Operation',
     {
       id: {
-        allowNull: false,
-        primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false,
       },
-      value: { type: DataTypes.INTEGER, allowNull: false },
+      value: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       billPreference: {
         type: DataTypes.ENUM,
         values: ['10', '50', '100'],
@@ -22,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM,
-        values: ['open', 'provisioned', 'ready'],
+        values: ['open', 'provisioning', 'ready'],
         defaultValue: 'open',
         allowNull: false,
       },
