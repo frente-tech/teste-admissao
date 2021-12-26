@@ -3,7 +3,7 @@
   "parserOptions": {
     "ecmaVersion": 2020
   },
-  "extends": ["airbnb", "plugin:editorconfig/noconflict", "plugin:node/recommended"],
+  "extends": ["airbnb-base", "plugin:editorconfig/noconflict", "plugin:node/recommended"],
   "plugins": ["sonarjs", "editorconfig", "import", "node"],
   "rules": {
     "no-console": "off",
