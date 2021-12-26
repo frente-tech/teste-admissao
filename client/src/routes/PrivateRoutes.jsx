@@ -2,9 +2,9 @@ import { Progress } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useUserCtx } from '../context/UserContext';
-import useCheckLogin from '../services/api/queries/useCheckLogin';
+import useCheckLogin from '../hooks/api/queries/useCheckLogin';
 
-const PrivateRoute = () => {
+const PrivateRoutes = () => {
   const {
     setUserData,
   } = useUserCtx();
@@ -15,8 +15,8 @@ const PrivateRoute = () => {
     if (isSuccess && response?.data?.email.length) {
       setUserData({ ...response?.data });
     }
-  }, [isSuccess, response, setUserData]);
-  if (error) navigate('/login');
+    if (error) navigate('/login');
+  }, [error, isSuccess, navigate, response, setUserData]);
 
   return (
     <>
@@ -26,4 +26,4 @@ const PrivateRoute = () => {
   );
 };
 
-export default PrivateRoute;
+export default PrivateRoutes;

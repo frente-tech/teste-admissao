@@ -1,16 +1,18 @@
-import {
-  Button,
-} from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useUserCtx } from '../context/UserContext';
-import usePostLogin from '../hooks/api/mutations/usePostLogin';
 import CustomInput from './CustomInput';
+import usePostSignup from '../hooks/api/mutations/usePostSignup';
 
-const inputs = [
+const INPUTS = [
+  { id: 'name', label: 'Nome' },
+  { id: 'cpf', label: 'CPF' },
+  { id: 'address', label: 'Endereço' },
+  { id: 'birthdate', label: 'Data de nascimento' },
   { id: 'email', label: 'Email' },
   { id: 'password', label: 'Senha', type: 'password' },
 ];
@@ -20,10 +22,10 @@ const schema = yup.object({
   password: yup.string().required(),
 });
 
-const Form = () => {
+const SignupForm = () => {
   const { setUserData } = useUserCtx();
   const navigate = useNavigate();
-  const mutation = usePostLogin();
+  const mutation = usePostSignup();
 
   const {
     handleSubmit,
@@ -45,16 +47,16 @@ const Form = () => {
     });
   };
 
-  const renderInputs = () => inputs.map((input) => (
+  const renderInputs = () => INPUTS.map((input) => (
     <CustomInput
       key={ input.id }
       id={ input.id }
       label={ input.label }
+      errors={ errors }
+      register={ register }
       inputCfg={ {
         type: input.type || 'text',
       } }
-      errors={ errors }
-      register={ register }
     />
   ));
 
@@ -62,10 +64,10 @@ const Form = () => {
     <form onSubmit={ handleSubmit(onSubmit) }>
       {renderInputs()}
       <Button isLoading={ mutation.isLoading } type="submit">
-        Login
+        Cadastrar
       </Button>
     </form>
   );
 };
 
-export default Form;
+export default SignupForm;
