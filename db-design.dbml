@@ -1,0 +1,65 @@
+Table Users as u {
+  id uuid(36) [pk]
+  name varchar(255) [not null]
+  email varchar(255) [not null, unique]
+  cpf varchar(50) [not null, unique]
+  password varchar(255) [not null]
+  role varchar(50) [not null, default: 'user']
+  address varchar(255) [not null]
+  birthdate dateonly [not null]
+  created_at timestamp [not null, default: `now()`]
+  deleted_at timestamp [note: 'soft-delete paranoid cfg']
+
+  indexes {
+    email
+  }
+}
+
+Table Operations as o {
+  id uuid(36) [pk]
+  client_id uuid(36) [not null, ref: > u.id]
+  value integer(4) [not null]
+  bill_preference bill_types [not null, default: '100']
+  status operation_status [not null, default: 'open']
+  created_at timestamp [default: `now()`]
+  
+    indexes {
+      client_id
+  }
+}
+
+Table Packages as p {
+  id uuid(36) [pk]
+  bill_type bill_types [not null]
+  status package_status [not null, default: 'open']
+  bill_quantity integer(2) [not null]
+  closed_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table Operation_Package as or {
+  operation_id uuid(36) [not null, ref: > o.id]
+  package_id uuid(36) [not null, ref: > p.id]
+  quantity integer(2)
+    indexes {
+    (operation_id, package_id) [pk]
+  }
+}
+
+enum bill_types {
+  10
+  50
+  100
+}
+
+enum operation_status {
+  open
+  provisioned
+  ready
+}
+
+enum package_status {
+  open
+  closed
+}
+

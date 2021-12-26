@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  frente-node:
+    build: .
+    container_name: frente-delivery-pkg-node
+    command: npm run start:dev
+    depends_on: 
+      - frente-postgres
+    ports:
+      - "${SRV_PORT}:${SRV_PORT}"
+      - "${REACT_DEV_PORT}:${REACT_DEV_PORT}"
+    volumes: 
+      - .:/frente-delivery-pkg
+    networks: 
+      - app
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    working_dir: /frente-delivery-pkg
+  frente-postgres:
+    image: postgres
+    container_name: frente-delivery-pkg-postgres
+    volumes: 
+      - frente-postgres-data:/data
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    networks: 
+      - app
+    env_file:
+      - .env
+volumes:
+  frente-postgres-data:
+networks: 
+  app:
+    name: app
