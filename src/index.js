@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 }
 
-app.use('/login', routes.login);
+app.use('/auth', routes.auth);
 
 app.use(errorMiddleware);
 

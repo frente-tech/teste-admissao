@@ -4,7 +4,7 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.createTable(
-        'Users',
+        'Operations',
         {
           id: {
             allowNull: false,
@@ -12,31 +12,37 @@ module.exports = {
             type: Sequelize.DataTypes.UUID,
             defaultValue: Sequelize.DataTypes.UUIDV4,
           },
-          name: {
+          clientId: {
+            type: Sequelize.DataTypes.UUID,
+            field: 'client_id',
             allowNull: false,
-            type: Sequelize.STRING,
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE',
+            references: {
+              model: 'Users',
+              key: 'id',
+            },
           },
-          address: {
+          value: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: Sequelize.DataTypes.INTEGER
           },
-          birthdate: {
+          billPreference: {
+            field: 'bill_preference',
             allowNull: false,
-            type: Sequelize.DATEONLY,
+            type: Sequelize.DataTypes.ENUM,
+            values: ['10', '50', '100'],
+            defaultValue: '100',
           },
-          cpf: {
+          status: {
             allowNull: false,
-            unique: true,
-            type: Sequelize.STRING,
+            type: Sequelize.DataTypes.ENUM,
+            values: ['open', 'provisioned', 'ready'],
+            defaultValue: 'open',
           },
           createdAt: {
             field: 'created_at',
             allowNull: false,
-            type: Sequelize.DataTypes.DATE,
-            defaultValue: Sequelize.DataTypes.NOW,
-          },
-          deletedAt: {
-            field: 'deleted_at',
             type: Sequelize.DataTypes.DATE
           },
         },
@@ -51,7 +57,7 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.dropTable('Users', { transaction });
+      await queryInterface.dropTable('Operations', { transaction });
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();

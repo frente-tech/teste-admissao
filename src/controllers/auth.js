@@ -1,11 +1,11 @@
 // const httpCodes = require('../constants/httpCodes.json');
 // const { AppError } = require('../errors');
-const { loginServices } = require('../services');
+const { authServices } = require('../services');
 
 const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const { token, userWithOutPassword } = await loginServices.loginUserSvc({
+    const { token, userWithOutPassword } = await authServices.loginUserSvc({
       email,
       password,
     });
@@ -32,16 +32,17 @@ const checkToken = async (req, res, next) => {
 const createUser = async (req, res, next) => {
   try {
     const { name, address, birthdate, cpf, password, email } = req.body;
-    const response = await loginServices.createUserSvc({
-      name,
-      address,
-      birthdate,
-      cpf,
-      password,
-      email,
-      role: 'user',
-    });
-    res.status(201).json({ ...response });
+    const { token, userWithOutPassword } = await authServices.createUserSvc(
+      { name, address, birthdate, cpf, password, email, role: 'user',
+      },
+    );
+    res
+      .cookie('token', token, {
+        expires: new Date(new Date().getTime() + 30 * 60 * 1000),
+        sameSite: 'strict',
+        httpOnly: true,
+      })
+      .json({ ...userWithOutPassword });
   } catch (error) {
     next(error);
   }

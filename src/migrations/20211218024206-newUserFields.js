@@ -6,7 +6,10 @@ module.exports = {
         'Users',
         'role',
         {
-          type: Sequelize.DataTypes.STRING,
+          type: Sequelize.DataTypes.ENUM,
+          values: ['user', 'admin'],
+          allowNull: false,
+          defaultValue: 'user',
         },
         { transaction }
       );
@@ -14,6 +17,8 @@ module.exports = {
         'Users',
         'email',
         {
+          allowNull: false,
+          unique: true,
           type: Sequelize.DataTypes.STRING,
         },
         { transaction }
@@ -22,6 +27,7 @@ module.exports = {
         'Users',
         'password',
         {
+          allowNull: false,
           type: Sequelize.DataTypes.STRING,
         },
         { transaction }

@@ -1,22 +1,20 @@
 'use strict';
 
 const { encryptString } = require("../utils/crypt");
+const { USER_SEED_UUIDV4 } = require("./20211222231943-users");
 
-const ADMIN_SEED_UUIDV4 = '1dc070d5-b863-470f-8f2f-773cdc68b42a';
+const OPERATION_SEED_UUIDV4 = 'c1db8bae-071e-4af2-8cf9-b676c5f48ee5';
 
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.bulkInsert('Users',[{
-        id: ADMIN_SEED_UUIDV4,
-        name: 'Administrador',
-        cpf: '12345678910',
-        address: 'Alameda Frente Corretora, 1, São Paulo',
-        birthdate: '2021-12-25',
-        email: 'admin@pkg.frente.com.br',
-        password: encryptString('@dmin', process.env.CRYPT_SECRET),
-        role: 'admin',
+      await queryInterface.bulkInsert('Operations',[{
+        id: OPERATION_SEED_UUIDV4,
+        client_id: USER_SEED_UUIDV4,
+        value: 3500,
+        bill_preference: '50',
+        status: 'ready',
         created_at: new Date(),
       }], { transaction });
       await transaction.commit();
@@ -30,11 +28,12 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.bulkDelete('Users', { id: ADMIN_SEED_UUIDV4 }, { transaction });
+      await queryInterface.bulkDelete('Operations', { id: OPERATION_SEED_UUIDV4 }, { transaction });
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
       throw err;
     }
-  }
+  },
+  OPERATION_SEED_UUIDV4,
 };

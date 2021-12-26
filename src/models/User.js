@@ -1,26 +1,39 @@
 /* eslint-disable max-lines-per-function */
-const { encryptString, decryptString } = require('../utils/crypt');
+/* eslint-disable strict */
 
-function hashPassword(user) {
-  if (!user.changed('password')) {
-    return null;
-  }
-  user.setDataValue(
-    'password',
-    encryptString(user.password, process.env.CRYPT_SECRET),
-  );
-}
+'use strict';
+
+const {
+  encryptString,
+  decryptString,
+  hashPassword,
+} = require('../utils/crypt');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
-      name: DataTypes.STRING,
-      address: DataTypes.STRING,
-      birthdate: DataTypes.STRING,
-      cpf: DataTypes.STRING,
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      name: { type: DataTypes.STRING, allowNull: false },
+      address: { type: DataTypes.STRING, allowNull: false },
+      birthdate: { type: DataTypes.DATEONLY, allowNull: false },
+      cpf: { type: DataTypes.STRING, allowNull: false, unique: true },
       password: {
+        allowNull: false,
         type: DataTypes.STRING,
+        // hash password when write
+        set(val) {
+          this.setDataValue(
+            'password',
+            encryptString(val, process.env.CRYPT_SECRET),
+          );
+        },
+        // decrypt password when read
         get() {
           return decryptString(
             this.getDataValue('password'),
@@ -28,19 +41,43 @@ module.exports = (sequelize, DataTypes) => {
           );
         },
       },
-      email: DataTypes.STRING,
-      role: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      role: {
+        allowNull: false,
+        type: DataTypes.ENUM,
+        values: ['user', 'admin'],
+        defaultValue: 'user',
+      },
     },
     {
-      timestamps: false,
+      timestamps: true,
       tableName: 'Users',
+      updatedAt: false,
       underscored: true,
+      paranoid: true,
       hooks: {
-        beforeCreate: hashPassword,
+        // needed update hash after an update change
+
         beforeUpdate: hashPassword,
+      },
+      scopes: {
+        withoutPassword: {
+          attributes: { exclude: ['password'] },
+        },
       },
     },
   );
+
+  User.associate = (models) => {
+    User.hasMany(models.Operation, {
+      foreignKey: 'clientId',
+      as: 'operations',
+    });
+  };
 
   return User;
 };
