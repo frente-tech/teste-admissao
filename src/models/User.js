@@ -77,9 +77,14 @@ module.exports = (sequelize, DataTypes) => {
 
         beforeUpdate: hashPassword,
       },
+      defaultScope: {
+        attributes: {
+          exclude: ['password'],
+        },
+      },
       scopes: {
-        withoutPassword: {
-          attributes: { exclude: ['password'] },
+        withPassword: {
+          attributes: { exclude: null },
         },
       },
     },

@@ -9,7 +9,7 @@ const loginUserSvc = async (user) => {
   const validate = ajv.getSchema('login');
   const isValid = validate(user);
   if (isValid) {
-    const userLogged = await User.findOne({
+    const userLogged = await User.scope('withPassword').findOne({
       where: { email: user.email },
     });
     if (userLogged && userLogged.get('password') === user.password) {
