@@ -7,7 +7,7 @@ const RETRIES = 2;
 
 const REQUEST = {
   method: 'get',
-  url: 'login/check',
+  url: 'auth/check',
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 };

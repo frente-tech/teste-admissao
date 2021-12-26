@@ -13,7 +13,7 @@ const REQUEST = {
 
 const usePostLogin = () => {
   const mutation = useMutation(
-    (user) => axios.post('/login', user, REQUEST),
+    (user) => axios.post('auth/login', user, REQUEST),
     {
       retry: RETRY,
       retryDelay: RETRY_DELAY,

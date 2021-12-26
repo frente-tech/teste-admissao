@@ -13,7 +13,7 @@ const REQUEST = {
 
 const usePostSignup = () => {
   const mutation = useMutation(
-    (newUser) => axios.post('/signup', newUser, REQUEST),
+    (newUser) => axios.post('auth/signup', newUser, REQUEST),
     {
       retry: RETRY,
       retryDelay: RETRY_DELAY,
