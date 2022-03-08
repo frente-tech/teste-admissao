@@ -1,0 +1,32 @@
+{
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".jsx",
+          ".js",
+          ".json"
+        ],
+        "alias": {
+          "@": "./src/",
+          "@components": "./src/components",
+          "@api": "./src/api",
+          "@hooks": "./src/hooks",
+          "@services": "./src/services",
+          "@styles": "./src/styles",
+          "@utils": "./src/utils",
+          "@assets": "./src/assets"
+        }
+      }
+    ]
+  ]
+}
