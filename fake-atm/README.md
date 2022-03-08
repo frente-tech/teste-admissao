@@ -3,7 +3,7 @@
 
 Application that simulates an automatic teller machine that automates the delivery of paper money.
 
-
+- [Main repository](https://github.com/tiago-santos-dev/fake-atm)
 ## Tech Stack
 
 NextJs, Typescript, Styled Components, Formik and Yup.
